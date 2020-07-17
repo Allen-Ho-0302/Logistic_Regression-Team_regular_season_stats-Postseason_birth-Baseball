@@ -206,4 +206,112 @@ print(conf_mat)
 #-----above code are examples of team season OBP vs making the postseason that year or not
 #-----the code can all be used to see the logistic model between team season stats vs teams making the postseason or not 
 
+#-----below are multivariate logistic regression---------------------------------------------
+#-----using BA, OBP, SLG, OPS as example 
+# Define model formula
+formula = 'POST ~ BA+OBP+SLG+OPS'
 
+# Fit GLM
+model = glm(formula, data = df_com, family = sm.families.Binomial()).fit()
+
+# Print model summary
+print(model.summary())
+
+# Import functions
+from statsmodels.stats.outliers_influence import variance_inflation_factor
+
+# Get variables for which to compute VIF and add intercept term
+X = df_com[['BA', 'OBP', 'SLG', 'OPS']]
+X['Intercept'] = 1
+
+# Compute and view VIF
+vif = pd.DataFrame()
+vif["variables"] = X.columns
+vif["VIF"] = [variance_inflation_factor(X.values, i) for i in range(X.shape[1])]
+
+# View results using print
+print(vif)
+
+# Compare deviance of null and residual model
+diff_deviance = model.null_deviance - model.deviance
+
+# Print the computed difference in deviance
+print(diff_deviance)
+
+# define formula_BA
+formula_BA = 'POST ~ BA'
+
+# Fit GLM
+model_BA = glm(formula_BA, data = df_com, family = sm.families.Binomial()).fit()
+
+# Compare deviance of null and residual model
+diff_deviance = model_BA.null_deviance - model_BA.deviance
+
+# Print the computed difference in deviance
+print('Adding BA to the null model reduces deviance by: ', 
+      round(diff_deviance,3))
+
+# define formula_OBP
+formula_OBP = 'POST ~ OBP'
+
+# Fit GLM
+model_OBP = glm(formula_OBP, data = df_com, family = sm.families.Binomial()).fit()
+
+# Compute the difference in adding OBP variable
+diff_deviance_1 = model_OBP.deviance - model_BA.deviance
+
+# Print the computed difference in deviance
+print('Adding OBP to the BA model reduces deviance by: ', 
+      round(diff_deviance_1,3))
+
+# define formula_SLG
+formula_SLG = 'POST ~ SLG'
+
+# Fit GLM
+model_SLG = glm(formula_SLG, data = df_com, family = sm.families.Binomial()).fit()
+
+# Compute the difference in adding BA variable
+diff_deviance_2 = model_SLG.deviance - model_BA.deviance
+
+# Print the computed difference in deviance
+print('Adding SLG to the BA model reduces deviance by: ', 
+      round(diff_deviance_2,3))
+
+# define formula_OPS
+formula_OPS = 'POST ~ OPS'
+
+# Fit GLM
+model_OPS = glm(formula_OPS, data = df_com, family = sm.families.Binomial()).fit()
+
+# Compute the difference in adding BA variable
+diff_deviance_3 = model_OPS.deviance - model_BA.deviance
+
+# Print the computed difference in deviance
+print('Adding OPS to the BA model reduces deviance by: ', 
+      round(diff_deviance_3,3))
+
+# Import function dmatrix()
+from patsy import dmatrix
+import numpy as np
+
+# Construct model matrix with OBP
+model_matrix = dmatrix('OBP', data = df_com, return_type = 'dataframe')
+print(model_matrix.head())
+
+# Construct model matrix with OBP and OPS
+model_matrix_1 = dmatrix('OBP+OPS', data = df_com, return_type = 'dataframe')
+print(model_matrix_1.head())
+
+
+# Construct model matrix for OBP with log transformation
+dmatrix('np.log(OBP)', data = df_com,
+       return_type = 'dataframe').head()
+
+
+# Define model formula
+formula = 'POST ~ np.log(OBP)'
+# Fit GLM
+model_log_OBP = glm(formula, data = df_com, 
+                     family = sm.families.Binomial()).fit()
+# Print model summary
+print(model_log_OBP.summary())
