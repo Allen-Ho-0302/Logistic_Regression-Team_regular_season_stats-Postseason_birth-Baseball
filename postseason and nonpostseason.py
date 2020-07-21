@@ -93,8 +93,8 @@ df = pd.read_sql(query, sql_conn)
 df_npost = df
 
 #add each dataframe a new column named POST, which imply whether the team made the postseason
-df_post['POST']= True
-df_npost['POST']= False
+df_post['POST']= 1
+df_npost['POST']= 0
 
 #append two dataframes together
 df_com=df_post.append(df_npost)
@@ -132,12 +132,12 @@ print(OBP_fit.conf_int())
 # Compute the multiplicative effect on the odds
 print('Odds: \n', np.exp(OBP_fit.params))
 
-# Define x at 1.5
-x = 0.315
+# Define x at 0.333
+x = 0.333
 
 # Compute and print the estimated probability
 est_prob = np.exp(intercept + slope*x)/(1+np.exp(intercept + slope*x))
-print('Estimated probability at x = 0.315: ', round(est_prob, 4))
+print('Estimated probability at x = 0.333: ', round(est_prob, 4))
 
 # Compute the slope of the tangent line for parameter beta at x
 slope_tan = slope * est_prob * (1 - est_prob)
