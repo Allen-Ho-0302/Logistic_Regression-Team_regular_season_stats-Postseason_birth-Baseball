@@ -104,7 +104,7 @@ np.log(OBP)    45.5547      6.460      7.052      0.000      32.894      58.215
 
 
 
-Overall One Line Conclusion: if your team has a season avg obp of 0.333, you have over 70% chance of breaking into postseason 
+One sentence conclusion: if your team has a season avg obp of 0.333, you have over 70% chance of breaking into postseason 
 
 
 
