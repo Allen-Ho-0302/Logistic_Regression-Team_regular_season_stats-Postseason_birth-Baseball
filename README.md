@@ -9,7 +9,6 @@ See how these stats influence postseason birth
 Take OBP's result for example:
 
                  coef    std err          z      P>|z|      [0.025      0.975]
-------------------------------------------------------------------------------
 Intercept    -46.1098      6.456     -7.142      0.000     -58.764     -33.456
 OBP          141.2667     19.986      7.068      0.000     102.095     180.439
 
@@ -58,7 +57,6 @@ No. Iterations:                     5
 Covariance Type:            nonrobust                                         
 
                  coef    std err          z      P>|z|      [0.025      0.975]
-------------------------------------------------------------------------------
 Intercept    -45.3516      6.671     -6.799      0.000     -58.426     -32.277
 BA           -40.6929     24.142     -1.686      0.092     -88.009       6.624
 OBP         -379.9535    337.463     -1.126      0.260   -1041.369     281.462
@@ -98,12 +96,11 @@ model matrix with OBP and OPS:
 model matrix for OBP with log transformation
 
                   coef    std err          z      P>|z|      [0.025      0.975]
--------------------------------------------------------------------------------
 Intercept      51.0160      7.303      6.985      0.000      36.702      65.330
 np.log(OBP)    45.5547      6.460      7.052      0.000      32.894      58.215
 
 
-
+----------------------------------------------------------------------------------------------------------------------------------------------
 One sentence conclusion: if your team has a season avg obp of 0.333, you have over 70% chance of breaking into postseason 
 
 
