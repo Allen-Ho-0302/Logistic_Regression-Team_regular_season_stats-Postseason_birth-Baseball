@@ -8,12 +8,11 @@ See how these stats influence postseason birth
 
 Take OBP's result for example:
 
-==============================================================================
                  coef    std err          z      P>|z|      [0.025      0.975]
 ------------------------------------------------------------------------------
 Intercept    -46.1098      6.456     -7.142      0.000     -58.764     -33.456
 OBP          141.2667     19.986      7.068      0.000     102.095     180.439
-==============================================================================
+
 
 Intercept = -46.10975255466771
 Slope = 141.2666813157292 ===> beta coefficient is where the likelihood takes on maximum value
@@ -47,7 +46,7 @@ OBP        2.183174e+44  2.309894e+78
 multivariate logistic regression results, take BA+OBP+SLG+OPS for example:
 
 Generalized Linear Model Regression Results                  
-==============================================================================
+
 Dep. Variable:                   POST   No. Observations:                  240
 Model:                            GLM   Df Residuals:                      235
 Model Family:                Binomial   Df Model:                            4
@@ -57,7 +56,7 @@ Date:                Mon, 20 Jul 2020   Deviance:                       215.49
 Time:                        21:39:18   Pearson chi2:                     213.
 No. Iterations:                     5                                         
 Covariance Type:            nonrobust                                         
-==============================================================================
+
                  coef    std err          z      P>|z|      [0.025      0.975]
 ------------------------------------------------------------------------------
 Intercept    -45.3516      6.671     -6.799      0.000     -58.426     -32.277
@@ -65,7 +64,7 @@ BA           -40.6929     24.142     -1.686      0.092     -88.009       6.624
 OBP         -379.9535    337.463     -1.126      0.260   -1041.369     281.462
 SLG         -551.9089    340.083     -1.623      0.105   -1218.460     114.642
 OPS          551.5402    339.361      1.625      0.104    -113.596    1216.676
-==============================================================================
+
 
 VIF: variance inflation factor, if the VIF is above 2.5 should consider there is effect of multicollinearity on fitted model, result is quite accurate because OBP, SLG and OPS are highly correlated to each other
 
@@ -97,12 +96,12 @@ model matrix with OBP and OPS:
 4        1.0  0.338  0.832
 
 model matrix for OBP with log transformation
-===============================================================================
+
                   coef    std err          z      P>|z|      [0.025      0.975]
 -------------------------------------------------------------------------------
 Intercept      51.0160      7.303      6.985      0.000      36.702      65.330
 np.log(OBP)    45.5547      6.460      7.052      0.000      32.894      58.215
-===============================================================================
+
 
 
 
