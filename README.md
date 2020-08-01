@@ -1,10 +1,20 @@
-Using data from Baseball Reference
+Introduction:
+
+See how stats like PA, AB, H, 2B, 3B, HR, RBI, SB, BA, OBP, SLG, etc influence postseason birth
+
+
+Methods:
+
+Data was from Baseball Reference
 
 Using SQL Server and Python(Spyder)
 
-Gathering MLB regular season team stats from 2012-2019, including stats like PA, AB, H, 2B, 3B, HR, RBI, SB, BA, OBP, SLG, etc 
+Gathering MLB regular season team stats from 2012-2019
 
-See how these stats influence postseason birth
+Using logistic regression
+
+
+Result:
 
 Take OBP's result for example:
 
@@ -101,7 +111,9 @@ np.log(OBP)    45.5547      6.460      7.052      0.000      32.894      58.215
 
 
 ----------------------------------------------------------------------------------------------------------------------------------------------
-One sentence conclusion: if your team has a season avg obp of 0.333, you have over 70% chance of breaking into postseason 
+Conclusion:
+
+if your team has a season avg obp of 0.333, you have over 70% chance of breaking into postseason 
 
 
 
